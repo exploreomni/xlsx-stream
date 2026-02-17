@@ -1,12 +1,10 @@
 {
-    "name": "xlsx-write-stream",
+    "name": "@omni-co/xlsx-write-stream",
     "version": "1.0.3",
     "description": "XLSX stream writer",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "keywords": [
-        "apify",
-        "apifier",
         "xlsx",
         "stream"
     ],
@@ -21,12 +19,12 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/apify/xlsx-stream"
+        "url": "git+https://github.com/exploreomni/xlsx-stream"
     },
     "bugs": {
-        "url": "https://github.com/apify/xlsx-stream"
+        "url": "https://github.com/exploreomni/xlsx-stream/issues"
     },
-    "homepage": "https://github.com/apify/xlsx-stream",
+    "homepage": "https://github.com/exploreomni/xlsx-stream",
     "files": [
         "dist"
     ],
@@ -44,9 +42,7 @@
         "tslib": "^2.6.3"
     },
     "devDependencies": {
-        "@apify/tsconfig": "^0.1.0",
         "@types/node": "^18.15.3",
-        "apify-jsdoc-template": "github:apify/apify-jsdoc-template",
         "babel-cli": "^6.18.0",
         "babel-core": "^6.26.0",
         "babel-eslint": "^8.0.1",

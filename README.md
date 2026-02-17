@@ -1,6 +1,6 @@
-# XLSX Write Stream library
+# @omni-co/xlsx-write-stream
 
-[![Build Status](https://travis-ci.org/apify/xlsx-stream.svg?branch=master)](https://travis-ci.org/apify/xlsx-stream) [![npm version](https://badge.fury.io/js/xlsx-write-stream.svg)](http://badge.fury.io/js/xlsx-write-stream)
+> Fork of [xlsx-write-stream](https://github.com/apify/xlsx-stream) originally created by [Apify](https://www.apify.com).
 
 XLSX Write Stream is a streaming writer for XLSX spreadsheets. Its purpose is to replace CSV for large exports, because using
 CSV in Excel is very buggy and error prone. It's very efficient and can quickly write hundreds of thousands of rows with
@@ -12,13 +12,13 @@ other [OOXML](https://en.wikipedia.org/wiki/Office_Open_XML) features. It's stri
 ## Installation
 
 ```node
-npm i 'xlsx-write-stream'
+npm i '@omni-co/xlsx-write-stream'
 ```
 
 ## Example Usage
 
 ```node
-import XLSXTransformStream from 'xlsx-write-stream';
+import XLSXTransformStream from '@omni-co/xlsx-write-stream';
 
 // Input stream needs to implement Stream.Readable interface
 // and each chunk should be an array of values (only string, date and number are supported value types)
