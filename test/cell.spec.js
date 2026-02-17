@@ -46,4 +46,28 @@ describe('The Cell function', () => {
         const result = Cell({ x: 'random' }, getCellId(4, 5));
         expect(result).to.be.equal(expectedResult);
     });
+
+    it(describeTestByType('formula'), () => {
+        const expectedResult = '<c r="A1"><f>SUM(A2:A10)</f></c>';
+        const result = Cell({ formula: 'SUM(A2:A10)' }, getCellId(0, 0));
+        expect(result).to.be.equal(expectedResult);
+    });
+
+    it(describeTestByType('formula with = prefix'), () => {
+        const expectedResult = '<c r="A1"><f>SUM(A2:A10)</f></c>';
+        const result = Cell({ formula: '=SUM(A2:A10)' }, getCellId(0, 0));
+        expect(result).to.be.equal(expectedResult);
+    });
+
+    it(describeTestByType('formula with cached value'), () => {
+        const expectedResult = '<c r="A1"><f>SUM(A2:A10)</f><v>42</v></c>';
+        const result = Cell({ formula: 'SUM(A2:A10)', cachedValue: 42 }, getCellId(0, 0));
+        expect(result).to.be.equal(expectedResult);
+    });
+
+    it(describeTestByType('formula with cached value containing &'), () => {
+        const expectedResult = '<c r="A1"><f>A2&amp;B2</f><v>foo&amp;bar</v></c>';
+        const result = Cell({ formula: 'A2&B2', cachedValue: 'foo&bar' }, getCellId(0, 0));
+        expect(result).to.be.equal(expectedResult);
+    });
 });

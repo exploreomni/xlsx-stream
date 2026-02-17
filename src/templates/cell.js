@@ -7,6 +7,14 @@ const OFFSET_DAYS = 25569;
 const MILLISECONDS_IN_ONE_DAY = 86400000;
 
 export default function (value, cell, shouldFormat) {
+    // Check if value is a formula object
+    if (value && typeof value === 'object' && value.formula) {
+        const formula = sanitize(value.formula);
+        // Excel formulas should not have the = prefix in the XML
+        const formulaContent = formula.startsWith('=') ? formula.substring(1) : formula;
+        return `<c r="${cell}"><f>${formulaContent}</f>${value.cachedValue !== undefined ? `<v>${sanitize(String(value.cachedValue))}</v>` : ''}</c>`;
+    }
+
     if (value instanceof Date) {
         const unixTimestamp = value.getTime();
         const officeTimestamp = (unixTimestamp / MILLISECONDS_IN_ONE_DAY) + OFFSET_DAYS;
