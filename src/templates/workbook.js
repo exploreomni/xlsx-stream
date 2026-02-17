@@ -1,4 +1,8 @@
-export default `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+import { sanitize } from '../utils';
+
+export default function Workbook(sheetName) {
+    const name = sanitize(sheetName || 'Data');
+    return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <workbook
     xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
     xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -9,7 +13,8 @@ export default `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
         <workbookView xWindow="480" yWindow="60" windowWidth="18195" windowHeight="8505"/>
     </bookViews>
     <sheets>
-        <sheet name="Data" sheetId="1" r:id="rId1"/>
+        <sheet name="${name}" sheetId="1" r:id="rId1"/>
     </sheets>
     <calcPr calcId="145621"/>
 </workbook>`;
+}

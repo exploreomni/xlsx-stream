@@ -9,6 +9,7 @@ export default class XLSXTransformStream extends Transform {
      * Create a new Stream
      * @param options {Object}
      * @param options.shouldFormat {Boolean} - If set to true writer is formatting cells with numbers and dates
+     * @param {string} [options.sheetName] - Custom sheet name (defaults to 'Data')
      */
     constructor(options = {}) {
         super({ objectMode: true });
@@ -40,7 +41,10 @@ export default class XLSXTransformStream extends Transform {
             name: '_rels/.rels',
         });
 
-        this.zip.append(templates.Workbook, {
+        const workbookContent = typeof templates.Workbook === 'function'
+            ? templates.Workbook(this.options.sheetName)
+            : templates.Workbook;
+        this.zip.append(workbookContent, {
             name: 'xl/workbook.xml',
         });
 

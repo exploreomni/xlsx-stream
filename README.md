@@ -25,6 +25,11 @@ import XLSXTransformStream from '@omni-co/xlsx-write-stream';
 inputStream
     .pipe(new XLSXTransformStream()) // This stream transforms the input into a xlsx format
     .pipe(fs.createWriteStream('file.xlsx')); // We need to store the result somewhere
+
+// You can specify a custom sheet name (defaults to 'Data')
+inputStream
+    .pipe(new XLSXTransformStream({ sheetName: 'Results' }))
+    .pipe(fs.createWriteStream('file.xlsx'));
 ```
 
 ## License
